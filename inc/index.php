@@ -10,7 +10,7 @@
 <body class="bg-dark">
     <form>
         <div class="card w-25 mt-3 mx-auto">
-            <img src="../img/Tech.png" class="card-img-top w-75 m-auto">
+            <img src="../img/Tecna.png" class="card-img-top w-75 m-auto">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
