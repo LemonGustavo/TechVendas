@@ -1,3 +1,15 @@
+<?php
+    include 'funcoes.php';
+    if (!empty($_GET)){
+        if ($_GET['acao']=='Adicionar Item') {
+            header('Location: addCart.php');
+        } else if ($_GET['acao']=='Cancelar') {
+            session_destroy();
+            header('Location: index.php');
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,7 +34,7 @@
                         <input type="number" name="cpCpf" class="form-control">
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="mt-4 btn btn-dark w-100 mb-4 w-100" value="Adicionar Item">
+                        <input type="submit" class="mt-4 btn btn-dark w-100 mb-4 w-100" value="Adicionar Item" name="acao">
                     </div>
                     <div class="col-md-12">
                         <table class="table mx-auto table-striped table-bordered">
@@ -55,16 +67,16 @@
                     <div class="col-md-8 mt-5">
                     </div>
                     <div class="col-md-2">
-                    <input type="submit" class="mt-4 btn btn-dark w-100 w-100" value="Cancelar">
+                    <input type="submit" class="mt-4 btn btn-dark w-100 w-100" value="Cancelar" name="acao">
                     </div>
                     <div class="col-md-2">
-                    <input type="submit" class="mt-4 btn btn-dark w-100 w-100" value="Concluir">
+                    <input type="submit" class="mt-4 btn btn-dark w-100 w-100" value="Concluir" name="acao">
                     </div>
                     <div class="col-md-2 mt-2">
                         <a href="index.php">Sair</a> 
                     </div>
                     <div class="col-md-10 text-end mt-2">
-                        <label class="fw-bold">Vendedor: XXXUXAXX</label>
+                        <label class="fw-bold">Vendedor: <?php echo $_SESSION['us'];?></label>
                     </div>
                 </div>
             </div>

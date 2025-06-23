@@ -1,3 +1,6 @@
+<?php
+    require 'funcoes.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -33,25 +36,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td colspan="6">Nenhum Produto.</td>
-                                </tr>
-                                <tr>
-                                    <td>136</td>
-                                    <td>R2D2 e BB8</td>
-                                    <td>Star Wars Co.</td>
-                                    <td>R$ 500,00</td>
-                                    <td>25</td>
-                                    <td><a href="#">Selecionar</a></td>
-                                </tr>
+                                <?php
+                                if(empty($_GET)) {
+                                echo '<tr>';
+                                    echo '<td colspan="6">Nenhum Produto.</td>';
+                                echo '</tr>';
+                                } else {
+                                    $produtos = busca($_GET['cpPro']);
+                                    if(!empty($produtos)) {
+                                        foreach ($produtos as $produto) {
+                                            echo '<tr>';
+                                            echo '<td>'.$produto['idproduto'].'</td>';
+                                            echo '<td>'.$produto['nomepro'].'</td>';
+                                            echo '<td>'.$produto['fab'].'</td>';
+                                            echo '<td>'.$produto['preco'].'</td>';
+                                            echo '<td>'.$produto['estoq'].'</td>';
+                                            echo '<td><a href="#">Selecionar</a></td>';
+                                            echo '</tr>';
+                                        }
+                                    } else {
+                                        echo '<tr>';
+                                        echo '<td colspan="6">Nenhum Produto.</td>';
+                                        echo '</tr>';
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-md-2 mt-2">
-                        <a href="index.php">Sair</a> 
+                        <a href="main.php">Voltar</a> 
                     </div>
                     <div class="col-md-10 text-end mt-2">
-                        <label class="fw-bold">Vendedor: XXXUXAXX</label>
+                        <label class="fw-bold">Vendedor: <?php echo $_SESSION['us']; ?></label>
                     </div>
                 </div>
             </div>

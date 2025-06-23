@@ -1,3 +1,16 @@
+<?php
+    include 'funcoes.php';
+    if (!empty($_GET)) {
+        $login = $_GET['cpLogin'];
+        $senha = $_GET['cpSenha'];
+        $msg = logar($login, $senha);
+        echo '<div class="alert alert-danger" role="alert" style="max-width: fit-content; margin-left: auto; 
+            margin-right: auto; background: carmin;">';
+            echo $msg;
+        echo '</div>';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
